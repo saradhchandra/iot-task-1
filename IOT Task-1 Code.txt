@@ -1,0 +1,28 @@
+IOT Domain Analysts LAB Task- 1
+M SARADH CHANDRA
+19BEC485
+
+
+import pandas as pd
+import seaborn as sns
+import numpy as np
+data_csv = pd.read_csv(r"D:\4. WORK\SEM 6\IOT Domain Analyst\LAB DA\Assets\percentage-of-schools-with-water-facility-2013-2016.csv")
+data_csv.head(20)
+data_csv.tail(20)
+data_csv.shape
+data_csv.describe()
+data_csv.columns
+data_csv.nunique()
+data_csv['State/UT'].unique()
+data_csv['All Schools'].unique()
+data_csv.isnull()
+data_csv.isnull().sum()
+data1 = data_csv.drop(['year', 'All Schools'], axis=1)
+data1.head(20)
+correlation = data1.corr()
+correlation
+sns.heatmap(correlation, xticklabels=correlation.columns, yticklabels=correlation.columns, annot=True)
+sns.heatmap(correlation, xticklabels=correlation.columns, yticklabels=correlation.columns, annot=False)
+sns.pairplot(data1)
+sns.relplot(x='year', y='State_UT', hue='Sec_with_HrSec.',data=data_csv)
+sns.distplot(data1['Primary_Only'])
